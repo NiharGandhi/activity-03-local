@@ -7,10 +7,18 @@ def sort_function_timer(sort_function, an_array):
     start = time.perf_counter()
     sort_function(an_array)
     end = time.perf_counter()
-    total_time = (end - start) / 60
+    total_time = round((end - start), 2)
     return total_time
 
 SIZES = [200, 500, 800, 1100, 1400, 1700, 2000]
+
+def range_array():
+    arr = []
+    for element in SIZES:
+        i = 0
+        while i <= element:
+            arr.append(random.randint(1, 10000))
+            i += 1
 
 def plot_sort_time_using_random_array(sort_function):
     print('timming:', sort_function.__name__)
@@ -31,7 +39,7 @@ def plot_sort_time_using_sorted_array(sort_function):
     plotter.new_series()
 
     for element in SIZES:
-        sorted_array = list(range(1, element + 1))
+        sorted_array = [range(1, element + 1)]
         time_taken = sort_function_timer(sort_function, sorted_array)
         plotter.add_data_point(time_taken)
 
@@ -46,13 +54,13 @@ def main():
     plot_sort_time_using_random_array(naive_sort)
 
     # Add data for sorted arrays
-    # plot_sort_time_using_sorted_array(naive_sort)
-    # plot_sort_time_using_sorted_array(merge_sort)
+    plot_sort_time_using_sorted_array(naive_sort)
+    plot_sort_time_using_sorted_array(merge_sort)
     # plot_sort_time_using_sorted_array(quickSort)
 
     # Hybrid Sort
-    plot_sort_time_using_random_array(quick_insertion_sort)
-    plot_sort_time_using_sorted_array(quick_insertion_sort)
+    # plot_sort_time_using_random_array(quick_insertion_sort)
+    # plot_sort_time_using_sorted_array(quick_insertion_sort)
 
     # Plot the results
     plotter.plot()
