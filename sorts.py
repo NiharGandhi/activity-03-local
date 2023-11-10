@@ -1,8 +1,3 @@
-"""
-First we are import log from ma
-"""
-from math import log2
-
 def naive_sort(data):
     for i in range(1, len(data)):
         j = i

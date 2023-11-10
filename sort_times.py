@@ -12,24 +12,20 @@ def sort_function_timer(sort_function, an_array):
 
 SIZES = [200, 500, 800, 1100, 1400, 1700, 2000]
 
-def range_array():
+def range_array(size):
     arr = []
-    for element in SIZES:
-        i = 0
-        while i <= element:
-            arr.append(random.randint(1, 10000))
-            i += 1
+    i = 0
+    while i < size:
+        arr.append(random.randint(1, 10000))
+        i += 1
+    return arr
 
 def plot_sort_time_using_random_array(sort_function):
     print('timming:', sort_function.__name__)
     plotter.new_series() 
 
-    arr = []
     for element in SIZES:
-        i = 0
-        while i <= element:
-            arr.append(random.randint(1, 10000))
-            i += 1
+        arr = range_array(element)
         time_taken = sort_function_timer(sort_function, arr)
         plotter.add_data_point(time_taken)
 
@@ -46,7 +42,7 @@ def plot_sort_time_using_sorted_array(sort_function):
 def main():
     # Initialize the plotter with title and labels
     plotter.init("Sorting Algorithm Performance",
-                 "Array Sizes", "Time Taken ")
+                 "Array Sizes", "Time Taken ", include_data_labels=True)
 
     # Call the plot_sort_time_using_random_array function for each sorting algorithm
     plot_sort_time_using_random_array(merge_sort)
@@ -54,13 +50,13 @@ def main():
     plot_sort_time_using_random_array(naive_sort)
 
     # Add data for sorted arrays
-    plot_sort_time_using_sorted_array(naive_sort)
-    plot_sort_time_using_sorted_array(merge_sort)
+    # plot_sort_time_using_sorted_array(naive_sort)
+    # plot_sort_time_using_sorted_array(merge_sort)
     # plot_sort_time_using_sorted_array(quickSort)
 
-    # Hybrid Sort
-    # plot_sort_time_using_random_array(quick_insertion_sort)
-    # plot_sort_time_using_sorted_array(quick_insertion_sort)
+    # Mix of Quuick and Insertion Sort
+    plot_sort_time_using_random_array(quick_insertion_sort)
+    plot_sort_time_using_sorted_array(quick_insertion_sort)
 
     # Plot the results
     plotter.plot()
