@@ -16,8 +16,12 @@ def plot_sort_time_using_random_array(sort_function):
     print('timming:', sort_function.__name__)
     plotter.new_series() 
 
+    arr = []
     for element in SIZES:
-        arr = [random.randint(1, 10000) for _ in range(element)]
+        i = 0
+        while i <= element:
+            arr.append(random.randint(1, 10000))
+            i += 1
         time_taken = sort_function_timer(sort_function, arr)
         plotter.add_data_point(time_taken)
 

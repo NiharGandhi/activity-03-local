@@ -58,7 +58,7 @@ def quickSort(arr):
         return []
 
     pivot = arr[0]
-    less, same, more = partition(pivot, arr)
+    less, same, more = partition_quick(pivot, arr)
 
     if len(less) > 0:
         less_lst = quickSort(less)
@@ -71,7 +71,7 @@ def quickSort(arr):
     return less_lst + same_lst + more_lst
 
 
-def partition(pivot, arr):
+def partition_quick(pivot, arr):
     less = []
     same = []
     more = []
@@ -86,20 +86,27 @@ def partition(pivot, arr):
             same.append(arr[i])
     return less, same, more
 
-def quick_insertion_sort(arr, start, end):
-    if start < end:
-        p = Partition(arr, start, end)
-        quick_insertion_sort(arr, start, p - 1)
-        quick_insertion_sort(arr, p + 1, end)
+
+def quick_insertion_sort(arr):
+    stack = [(0, len(arr) - 1)]
+
+    while stack:
+        start, end = stack.pop()
+
+        if start < end:
+            p = partition(arr, start, end)
+            stack.append((start, p - 1))
+            stack.append((p + 1, end))
 
 
+def partition(arr, start, end):
+    pivot = arr[end]
+    idx = start - 1
 
-def Partition(arr, start, end):
-    pivots = arr[end]
-    idx = start
-    for idx_2 in range(start, end + 1):
-        if arr[idx_2] < pivots:
-            arr[idx], arr[idx_2] = arr[idx_2], arr[idx]
+    for idx_2 in range(start, end):
+        if arr[idx_2] <= pivot:
             idx += 1
-    arr[idx], arr[end] = arr[end], arr[idx]
-    return idx
+            arr[idx], arr[idx_2] = arr[idx_2], arr[idx]
+
+    arr[idx + 1], arr[end] = arr[end], arr[idx + 1]
+    return idx + 1
