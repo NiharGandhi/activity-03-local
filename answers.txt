@@ -1,0 +1,3 @@
+Part 3:
+
+On testing the three sorting methods, we can see that Insertion and Merge Sort are able to work well with Speical Arrays (Sorted Arrays), but the Quick Sort is not able to work well with Speical Arrays (Sorted Arrays).
