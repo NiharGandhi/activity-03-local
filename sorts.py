@@ -1,4 +1,5 @@
-def naive_sort(data):
+def naive_sort(arr):
+    data = arr.copy()
     for i in range(1, len(data)):
         j = i
         while data[j-1] > data[j] and j > 0:
@@ -8,7 +9,8 @@ def naive_sort(data):
     return data
 
 
-def merge_sort(arr):
+def merge_sort(data):
+    arr = data.copy()
     if len(arr) <= 1:
         return arr
 
@@ -48,7 +50,9 @@ def merge(left, right):
     return merged
 
 
-def quickSort(arr):
+# Code created with help of PPT on MyCourses.
+def quickSort(data):
+    arr = data.copy()
     if not arr:
         return []
 
@@ -66,7 +70,9 @@ def quickSort(arr):
     return less_lst + same_lst + more_lst
 
 
-def partition_quick(pivot, arr):
+# Code created with help of PPT on MyCourses.
+def partition_quick(pivot, data):
+    arr = data.copy()
     less = []
     same = []
     more = []
