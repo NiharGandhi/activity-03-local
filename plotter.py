@@ -145,8 +145,6 @@ def __draw_axis(length, ticks, label, right=True):
         turtle.pensize(1)
         turtle.left(90)
         turtle.forward(5)
-        if right:
-            turtle.write(int((i + 1) * tick_distance), align="center")
         turtle.back(10)
         turtle.forward(5)
         turtle.right(90)
