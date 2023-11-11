@@ -1,4 +1,5 @@
-def insertion_sort(arr):
+def insertion_sort(data):
+    arr = data.copy()
     for i in range(1, len(arr)):
         key = arr[i]
         j = i
@@ -6,6 +7,7 @@ def insertion_sort(arr):
             arr[j] = arr[j - 1]
             j = j - 1
         arr[j] = key
+    return arr
     
 
 def merge_sort(data):
