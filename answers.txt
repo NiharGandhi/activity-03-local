@@ -1,3 +1,5 @@
 Part 3:
 
-On testing the three sorting methods, we can see that Insertion and Merge Sort are able to work well with Speical Arrays (Sorted Arrays), but the Quick Sort is not able to work well with Speical Arrays (Sorted Arrays).
+On testing the three sorting methods, we can see that Insertion and Merge Sort are able to work well with Speical Arrays (Sorted Arrays), but the Quick Sort is not able to work well with Speical Arrays (Sorted Arrays). The most likely reason for this is that since the pivot is the first element in the array, we are not able to change the arrays as it's already sorted.
+
+Part 5:
