@@ -1,8 +1,8 @@
 import random
 import plotter
 import time
-from sorts import quickSort, quick_insertion_sort
-from sorts_2 import insertion_sort, merge_sort, quick_sort
+from sorts import quickSort
+from sorts_2 import insertion_sort, merge_sort, quicksort, quick_insertion_sort
 
 def sort_funtion_timer(sort_funtion, an_array):
     start = time.perf_counter()
@@ -42,7 +42,7 @@ def plot_sort_time_using_sorted_z(sort_function):
         time_taken = sort_funtion_timer(sort_function, array)
         plotter.add_data_point(time_taken)
 
-sort_functions = [insertion_sort, merge_sort, quick_sort]
+sort_functions = [insertion_sort, merge_sort]
 
 def main():
     plotter.init('Time Complexity', 'Array Size', 'Time Taken')
@@ -50,13 +50,13 @@ def main():
     # for sort in sort_functions:
     #     plot_sort_time_using_random_arrays(sort)
     
-    print('SORTED ARRAYES')
-    for sort in sort_functions:
-        plot_sort_time_using_sorted_z(sort)
+    # print('SORTED ARRAYES')
+    # for sort in sort_functions:
+    #     plot_sort_time_using_sorted_z(sort)
 
-    # print('QUICK INSERTION SORT')
-    # plot_sort_time_using_random_arrays(quick_insertion_sort)
-    # plot_sort_time_using_sorted_z(quick_insertion_sort)
+    print('QUICK INSERTION SORT')
+    plot_sort_time_using_random_arrays(quick_insertion_sort)
+    plot_sort_time_using_sorted_z(quick_insertion_sort)
 
     plotter.plot()
     input('Hit Enter: ')
