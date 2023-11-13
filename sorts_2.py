@@ -63,20 +63,32 @@ def quicksort(data):
         return quicksort(left) + [pivot] + quicksort(right)
 
 
-def quick_insertion_sort(arr):
+# def quick_insertion_sort(data):
+#     arr = data.copy()
+#     if len(arr) <= 1:
+#         return arr
+
+#     pivot = arr[0]
+#     left = [x for x in arr[1:] if x < pivot]
+#     right = [x for x in arr[1:] if x >= pivot]
+
+#     # Check if the array is nearly sorted
+#     if abs(arr[0] - arr[-1]) < 900:
+#         return arr
+
+#     # Recursively sort the subarrays if the array is not nearly sorted
+#     left_sorted = quick_insertion_sort(left)
+#     right_sorted = quick_insertion_sort(right)
+
+#     return left_sorted + [pivot] + right_sorted
+
+def quick_insertion_sort(data):
+    arr = data.copy()
     if len(arr) <= 1:
         return arr
-
-    pivot = arr[0]
-    left = [x for x in arr[1:] if x < pivot]
-    right = [x for x in arr[1:] if x >= pivot]
-
-    # Check if the array is nearly sorted
-    if abs(arr[0] - arr[-1]) < 900:
-        return arr
-
-    # Recursively sort the subarrays if the array is not nearly sorted
-    left_sorted = quick_insertion_sort(left)
-    right_sorted = quick_insertion_sort(right)
-
-    return left_sorted + [pivot] + right_sorted
+    
+    thresh = arr[0] - arr[-1]
+    if thresh < 0:
+        insertion_sort(arr)
+    else:
+        quicksort(arr)
